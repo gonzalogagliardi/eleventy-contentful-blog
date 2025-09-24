@@ -3,7 +3,7 @@ name: Deploy Eleventy to Hostinger
 on:
   push:
     branches: [ "main" ]
-  repository_dispatch: # para disparar con Webhook de Contentful
+  repository_dispatch:
 
 jobs:
   build-and-deploy:
@@ -33,5 +33,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: public/
-          server-dir: public_html/
+          port: 21
+          protocol: ftp
+          local-dir: ./public/
+          server-dir: /public_html/
